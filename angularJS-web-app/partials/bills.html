@@ -1,0 +1,174 @@
+<div class="page-header"><!-- Page Header -->
+    <h3>Bills</h3>
+</div><!-- Page Header -->
+
+<div class="carousel slide myCarousel" data-ride="carousel" data-interval="false" id="billsCarousel"><!-- Carousel -->
+    <div class="carousel-inner"><!-- Wrapper for Slides -->
+        <div class="item active"><!-- Slide-1 Tabs -->
+            <ul class="nav nav-tabs"><!-- Nav Tabs -->
+                <li class="active"><a data-toggle="tab" href="partials/bills.html#active">Active Bills</a></li>
+                <li><a data-toggle="tab" href="partials/bills.html#new">New Bills</a></li>
+            </ul><!-- Nav Tabs -->
+            
+            <div class="tab-content"><!-- Tabs -->
+                <div id="active" class="tab-pane fade in active"><!-- Tab Active -->
+                    <div class="panel panel-default"><!-- Pane Active -->
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-5 col-sm-6">
+                                    <strong>Active Bills</strong>
+                                </div>
+                                <div class="col-xs-7 col-sm-6">
+                                    <span class="pull-right">
+                                        <input type="text" class="form-control" placeholder="Search" ng-model="query_active">
+                                    </span>     
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel-body table-responsive">
+                            <table class="table table-hover table-condensed">
+                                <thead>
+                                    <tr>
+                                        <th class="col-sm-2">Bill ID</th>
+                                        <th class="col-sm-1">Bill Type</th>
+                                        <th class="col-sm-3 hidden-xs">Title</th>
+                                        <th class="col-sm-1">Chamber</th>
+                                        <th class="col-sm-2">Introduced On</th>
+                                        <th class="col-sm-2">Sponsor</th>
+                                        <th class="col-sm-1"></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr dir-paginate="x in activeBills | filter:query_active | orderBy:'-introduced_on' | itemsPerPage:10" pagination-id="pid_bills_active">
+                                        <td class="text-uppercase">{{ x.bill_id }}</td>
+                                        <td class="text-uppercase">{{ x.bill_type }}</td>
+                                        <td class="hidden-xs">{{ x.official_title }}</td>
+                                        <td><img ng-src="images/{{ x.chamber | toChamberImageName }}" alt="chamber image" style="width:20px" />&nbsp;<span class="text-capitalize">{{ x.chamber }}</span></td>
+                                        <td>{{ x.introduced_on }}</td>
+                                        <td>{{ x.sponsor.title + ", " + x.sponsor.last_name + ", " + x.sponsor.first_name }}</td>
+                                        <td><button type="button" class="btn btn-primary btn-sm" ng-click="getBillDetails(x.bill_id);goForward('#billsCarousel')">View Details</button><td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="text-center">
+                                <dir-pagination-controls pagination-id="pid_bills_active" boundary-links="true" template-url="lib/angular/dirPagination.tpl.html"></dir-pagination-controls>           
+                            </div>            
+                        </div>
+                    </div><!-- Pane Active -->
+                </div><!-- Tab Active -->
+                
+                <div id="new" class="tab-pane fade"><!-- Tab New -->
+                    <div class="panel panel-default"><!-- Pane New -->
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-5 col-sm-6">
+                                    <strong>New Bills</strong>
+                                </div>
+                                <div class="col-xs-7 col-sm-6">
+                                    <span class="pull-right">
+                                        <input type="text" class="form-control" placeholder="Search" ng-model="query_new">
+                                    </span>     
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel-body table-responsive">
+                            <table class="table table-hover table-condensed">
+                                <thead>
+                                    <tr>
+                                        <th class="col-sm-2">Bill ID</th>
+                                        <th class="col-sm-1">Bill Type</th>
+                                        <th class="col-sm-3 hidden-xs">Title</th>
+                                        <th class="col-sm-1">Chamber</th>
+                                        <th class="col-sm-2">Introduced On</th>
+                                        <th class="col-sm-2">Sponsor</th>
+                                        <th class="col-sm-1"></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr dir-paginate="x in newBills | filter:query_new | orderBy:'-introduced_on' | itemsPerPage:10" pagination-id="pid_bills_active">
+                                        <td class="text-uppercase">{{ x.bill_id }}</td>
+                                        <td class="text-uppercase">{{ x.bill_type }}</td>
+                                        <td class="hidden-xs">{{ x.official_title }}</td>
+                                        <td><img ng-src="images/{{ x.chamber | toChamberImageName }}" alt="chamber image" style="width:20px" />&nbsp;<span class="text-capitalize">{{ x.chamber }}</span></td>
+                                        <td>{{ x.introduced_on }}</td>
+                                        <td>{{ x.sponsor.title + ", " + x.sponsor.last_name + ", " + x.sponsor.first_name }}</td>
+                                        <td><button type="button" class="btn btn-primary btn-sm" ng-click="getBillDetails(x.bill_id);goForward('#billsCarousel')">View Details</button><td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="text-center">
+                                <dir-pagination-controls pagination-id="pid_bills_active" boundary-links="true" template-url="lib/angular/dirPagination.tpl.html"></dir-pagination-controls>           
+                            </div>            
+                        </div>
+                    </div><!-- Pane New -->
+                </div><!-- Tab New -->
+            </div><!-- Tabs -->           
+        </div><!-- Slide-1 Tabs -->
+        
+        <div class="item"><!-- Slide-2 Details -->
+            <div class="panel panel-default"><!-- Details -->
+                <div class="panel-heading" style="background-color:white;">
+                    <button type="button" class="btn btn-default btn-sm" ng-click="goBack('#billsCarousel')"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span></button>
+                    <p class="detail-heading">Details</p>
+                    <button class="btn btn-default btn-sm pull-right" ng-click="toggleFavoriteBills(details_bill[0])">
+                        <i class="fa fa-star-o fa-lg" ng-hide="isInFavorite('bills', details_bill[0])"></i>
+                        <i class="fa fa-star fa-lg" ng-show="isInFavorite('bills', details_bill[0])" style="color:yellow"></i>
+                    </button>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-sm-6" style="padding-right:0">
+                            <table class="table" ng-repeat="b in details_bill | limitTo: 1">
+                                <tr>
+                                    <th class="col-xs-6 col-sm-2">Bill ID</th>
+                                    <td class="col-xs-6 col-sm-10 text-uppercase">{{ b.bill_id }}</td>
+                                </tr>
+                                <tr>
+                                    <th class="hidden-xs">Title</th>
+                                    <td class="hidden-xs">{{ b.official_title }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Bill Type</th>
+                                    <td class="text-uppercase">{{ b.bill_type }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Sponsor</th>
+                                    <td>{{ b.sponsor.title + ", " + b.sponsor.last_name + ", " + b.sponsor.first_name }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Chamber</th>
+                                    <td class="text-capitalize">{{ b.chamber }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Status</th>
+                                    <td>{{ b.history.active | billStatusFilter }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Introduced On</th>
+                                    <td>{{ b.introduced_on | date }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Congress URL</th>
+                                    <td><a href="{{ b.urls.congress }}" target="_blank">URL</a></td>
+                                </tr>
+                                <tr>
+                                    <th>Version Status</th>
+                                    <td>{{ b.last_version.version_name }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Bill URL</th>
+                                    <td><a href="{{ b.last_version.urls.pdf }}" target="_blank">Link</a></td>
+                                </tr>
+                            </table>
+                        </div>                    
+                        <div class="col-sm-6" style="padding-left:0">
+                            <div class="well" id="myWell">
+                                <object data="{{ pdfurl }}" type="application/pdf" width="100%" height="100%"></object>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- Details -->
+        </div><!-- Slide-2 Details -->
+    </div><!-- Wrapper for Slides -->
+</div><!-- Carousel -->    

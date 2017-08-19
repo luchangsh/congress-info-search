@@ -1,0 +1,2 @@
+An Single-Page Application (using AngularJS, jQuery, and Bootstrap) for congress information search (including legislators/bills/committees search and my favorites function).
+The backend server is using PHP, Apache server, Amazon Web Services, and Sunlight Congress APIs.

@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Congress API</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="title_activity_about">About Me</string>
+    <string name="title_activity_details_legislators">Legislator Info</string>
+    <string name="title_activity_details_bills">Bill Info</string>
+    <string name="title_activity_details_committees">Committee Info</string>
+</resources>

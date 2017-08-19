@@ -1,0 +1,162 @@
+<div class="page-header"><!-- Page Header -->
+    <h3>Committees</h3>
+</div><!-- Page Header -->
+
+<div class="myCarousel">
+    <ul class="nav nav-tabs"><!-- Nav Tabs -->
+        <li class="active"><a data-toggle="tab" href="partials/committees.html#house">House</a></li>
+        <li><a data-toggle="tab" href="partials/committees.html#senate">Senate</a></li>
+        <li><a data-toggle="tab" href="partials/committees.html#joint">Joint</a></li>
+    </ul><!-- Nav Tabs -->
+    
+    <div class="tab-content"><!-- Tabs -->        
+        <div id="house" class="tab-pane fade in active"><!-- Tab House -->        
+            <div class="panel panel-default"><!-- Pane House -->
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-xs-5 col-sm-6">
+                            <strong>House</strong>
+                        </div>
+                        <div class="col-xs-7 col-sm-6">
+                            <span class="pull-right">
+                                <input type="text" class="form-control" placeholder="Search" ng-model="query_house">
+                            </span>     
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-body table-responsive">
+                    <table class="table table-hover table-condensed">
+                        <thead>
+                            <tr>
+                                <th class="col-sm-1"></th>
+                                <th class="col-sm-1">Chamber</th>
+                                <th class="col-sm-1">Committee ID</th>
+                                <th class="col-sm-6">Name</th>
+                                <th class="col-sm-1">Parent Committee</th>
+                                <th class="col-sm-1">Contact</th>
+                                <th class="col-sm-1">Office</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr dir-paginate="x in committees | filter:{chamber:'house'} | filter:query_house | orderBy:'committee_id' | itemsPerPage:10" pagination-id="pid_committees_house">
+                                <td>
+                                    <button class="btn btn-default btn-sm" ng-click="toggleFavoriteCommittees(x)">
+                                        <i class="fa fa-star-o fa-lg" ng-hide="isInFavorite('committees', x)"></i>
+                                        <i class="fa fa-star fa-lg" ng-show="isInFavorite('committees', x)" style="color:yellow"></i>
+                                    </button>
+                                </td>
+                                <td>
+                                    <img ng-src="images/{{ x.chamber | toChamberImageName }}" alt="chamber image" style="width:20px" />&nbsp;<span class="text-capitalize">{{ x.chamber }}</span>
+                                </td>
+                                <td>{{ x.committee_id }}</td>
+                                <td>{{ x.name }}</td>
+                                <td>{{ x.parent_committee_id }}</td>
+                                <td>{{ x.phone }}</td>
+                                <td>{{ x.office | officeFilter }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="text-center">
+                        <dir-pagination-controls pagination-id="pid_committees_house" boundary-links="true" template-url="lib/angular/dirPagination.tpl.html"></dir-pagination-controls>
+                    </div>            
+                </div>
+            </div><!-- Pane House -->
+        </div><!-- Tab House -->
+        
+        <div id="senate" class="tab-pane fade"><!-- Tab Senate -->        
+            <div class="panel panel-default"><!-- Pane Senate -->
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-xs-5 col-sm-6">
+                            <strong>Senate</strong>
+                        </div>
+                        <div class="col-xs-7 col-sm-6">
+                            <span class="pull-right">
+                                <input type="text" class="form-control" placeholder="Search" ng-model="query_senate">
+                            </span>     
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-body table-responsive">
+                    <table class="table table-hover table-condensed">
+                        <thead>
+                            <tr>
+                                <th class="col-sm-1"></th>
+                                <th class="col-sm-1">Chamber</th>
+                                <th class="col-sm-1">Committee ID</th>
+                                <th class="col-sm-8">Name</th>
+                                <th class="col-sm-1">Parent Committee</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr dir-paginate="x in committees | filter:{chamber:'senate'} | filter:query_senate | orderBy:'committee_id' | itemsPerPage:10" pagination-id="pid_committees_senate">
+                                <td>
+                                    <button class="btn btn-default btn-sm" ng-click="toggleFavoriteCommittees(x)">
+                                        <i class="fa fa-star-o fa-lg" ng-hide="isInFavorite('committees', x)"></i>
+                                        <i class="fa fa-star fa-lg" ng-show="isInFavorite('committees', x)" style="color:yellow"></i>
+                                    </button>
+                                </td>
+                                <td>
+                                    <img ng-src="images/{{ x.chamber | toChamberImageName }}" alt="chamber image" style="width:20px" />&nbsp;<span class="text-capitalize">{{ x.chamber }}</span>
+                                </td>
+                                <td>{{ x.committee_id }}</td>
+                                <td>{{ x.name }}</td>
+                                <td>{{ x.parent_committee_id }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="text-center">
+                        <dir-pagination-controls pagination-id="pid_committees_senate" boundary-links="true" template-url="lib/angular/dirPagination.tpl.html"></dir-pagination-controls>
+                    </div>            
+                </div>
+            </div><!-- Pane Senate -->
+        </div> <!-- Tab Senate -->
+        
+        <div id="joint" class="tab-pane fade"><!-- Tab Joint -->        
+            <div class="panel panel-default"><!-- Pane Joint -->
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-xs-5 col-sm-6">
+                            <strong>Joint</strong>
+                        </div>
+                        <div class="col-xs-7 col-sm-6">
+                            <span class="pull-right">
+                                <input type="text" class="form-control" placeholder="Search" ng-model="query_joint">
+                            </span>     
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-body table-responsive">
+                    <table class="table table-hover table-condensed">
+                        <thead>
+                            <tr>
+                                <th class="col-sm-1"></th>
+                                <th class="col-sm-2">Chamber</th>
+                                <th class="col-sm-2">Committee ID</th>
+                                <th class="col-sm-7">Name</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr dir-paginate="x in committees | filter:{chamber:'joint'} | filter:query_joint | orderBy:'committee_id' | itemsPerPage:10" pagination-id="pid_committees_joint">
+                                <td>
+                                    <button class="btn btn-default btn-sm" ng-click="toggleFavoriteCommittees(x)">
+                                        <i class="fa fa-star-o fa-lg" ng-hide="isInFavorite('committees', x)"></i>
+                                        <i class="fa fa-star fa-lg" ng-show="isInFavorite('committees', x)" style="color:yellow"></i>
+                                    </button>
+                                </td>
+                                <td>
+                                    <img ng-src="images/{{ x.chamber | toChamberImageName }}" alt="chamber image" style="width:20px" />&nbsp;<span class="text-capitalize">{{ x.chamber }}</span>
+                                </td>
+                                <td>{{ x.committee_id }}</td>
+                                <td>{{ x.name }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="text-center">
+                        <dir-pagination-controls pagination-id="pid_committees_joint" boundary-links="true" template-url="lib/angular/dirPagination.tpl.html"></dir-pagination-controls>
+                    </div>            
+                </div>
+            </div><!-- Pane Joint -->
+        </div><!-- Tab Joint -->
+    </div><!-- Tabs -->
+</div>

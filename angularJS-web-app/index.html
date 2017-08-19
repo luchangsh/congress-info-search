@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Congress API</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+        <link rel="stylesheet" href="css/style.css" />
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
+    </head>
+    <body ng-controller="myController">
+        <div class="container-fluid">
+            <div id="header">
+                <div class="text-center">
+                    <button type="button" class="btn btn-default btn-sm pull-left" style="border-width:0" ng-click="toggleMenu()"><span class="glyphicon glyphicon-menu-hamburger"></span></button>
+                    <a href="http://sunlightfoundation.com" target="_blank"><img ng-src="images/logo.png" alt="logo" width="60px"/></a>
+                    <h3 style="display:inline"><strong>Congress API</strong></h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-2 col-sm-2 navbar navbar-inverse" id="navbar">
+                    <ul class="nav navbar-nav">
+                        <li><a href="#/legislators"><i class="fa fa-user" aria-hidden="true"></i><span class="hidden-xs">&nbsp;&nbsp;Legislators</span></a></li>
+                        <li><a href="#/bills"><i class="fa fa-file-o" aria-hidden="true"></i><span class="hidden-xs">&nbsp;&nbsp;Bills</span></a></li>
+                        <li><a href="#/committees"><i class="fa fa-sign-in" aria-hidden="true"></i><span class="hidden-xs">&nbsp;&nbsp;Committees</span></a></li>
+                        <li><a href="#/favorites"><i class="fa fa-star" aria-hidden="true"></i><span class="hidden-xs">&nbsp;&nbsp;Favorites</span></a></li>
+                    </ul>
+                </div>
+                <div class="col-xs-10 col-sm-10" id="content">
+                    <div ng-view></div>
+                </div>
+            </div>
+        </div>
+        <script src="lib/angular/dirPagination.js" defer></script>
+        <script src="lib/angular/ui-bootstrap-tpls-2.2.0.min.js" defer></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="js/script.js" defer></script>
+    </body>
+</html>

@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/content_details_legislators"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.example.cs571hw9.DetailsLegislatorsActivity"
+    tools:showIn="@layout/activity_details_legislators">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true">
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:shrinkColumns="1"
+            android:stretchColumns="0,1">
+
+            <TableRow android:paddingBottom="20dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_span="2"
+                    android:gravity="right"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/imageView_info_legislator_favorite"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginBottom="5dp"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginRight="15dp" />
+
+                    <ImageView
+                        android:id="@+id/imageView_info_legislator_facebook"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginBottom="5dp"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginRight="15dp"
+                        app:srcCompat="@drawable/facebook" />
+
+                    <ImageView
+                        android:id="@+id/imageView_info_legislator_twitter"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginBottom="5dp"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginRight="15dp"
+                        app:srcCompat="@drawable/twitter" />
+
+                    <ImageView
+                        android:id="@+id/imageView_info_legislator_website"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginBottom="5dp"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginRight="15dp"
+                        app:srcCompat="@drawable/website" />
+                </LinearLayout>
+            </TableRow>
+
+            <TableRow android:paddingBottom="20dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_span="2"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/imageView_info_legislator_photo"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp" />
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center_horizontal"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:id="@+id/imageView_info_legislator_party"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp" />
+
+                        <TextView
+                            android:id="@+id/textView_info_legislator_party"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_toEndOf="@+id/imageView_info_legislator_party"
+                            android:layout_toRightOf="@+id/imageView_info_legislator_party"
+                            android:textSize="18dp" />
+                    </RelativeLayout>
+                </LinearLayout>
+            </TableRow>
+
+            <TableRow android:paddingBottom="20dp">
+
+                <TextView
+                    android:layout_width="150dp"
+                    android:text="Name:"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textView_info_legislator_name"
+                    android:gravity="end" />
+            </TableRow>
+
+            <TableRow android:paddingBottom="20dp">
+
+                <TextView
+                    android:text="Email:"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textView_info_legislator_email"
+                    android:gravity="end" />
+            </TableRow>
+
+            <TableRow android:paddingBottom="20dp">
+
+                <TextView
+                    android:text="Chamber:"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textView_info_legislator_chamber"
+                    android:gravity="end" />
+            </TableRow>
+
+            <TableRow android:paddingBottom="20dp">
+
+                <TextView
+                    android:text="Contact:"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textView_info_legislator_contact"
+                    android:gravity="end" />
+            </TableRow>
+
+            <TableRow android:paddingBottom="20dp">
+
+                <TextView
+                    android:text="Start Term:"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textView_info_legislator_start_term"
+                    android:gravity="end" />
+            </TableRow>
+
+            <TableRow android:paddingBottom="20dp">
+
+                <TextView
+                    android:text="End Term:"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textView_info_legislator_end_term"
+                    android:gravity="end" />
+            </TableRow>
+
+            <TableRow android:paddingBottom="20dp">
+
+                <TextView
+                    android:text="Term:"
+                    android:textStyle="bold" />
+
+                <RelativeLayout
+                    android:layout_width="150dp"
+                    android:layout_height="20dp"
+                    android:padding="0dp">
+
+                    <ProgressBar
+                        android:id="@+id/progressBar_info_legislator_term"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:max="100"
+                        android:progressDrawable="@drawable/progressbar" />
+
+                    <TextView
+                        android:id="@+id/textView_info_legislator_term"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true" />
+                </RelativeLayout>
+
+
+            </TableRow>
+
+            <TableRow android:paddingBottom="20dp">
+
+                <TextView
+                    android:text="Office:"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textView_info_legislator_office"
+                    android:gravity="end" />
+            </TableRow>
+
+            <TableRow android:paddingBottom="20dp">
+
+                <TextView
+                    android:text="State:"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textView_info_legislator_state"
+                    android:gravity="end" />
+            </TableRow>
+
+            <TableRow android:paddingBottom="20dp">
+
+                <TextView
+                    android:text="Fax:"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textView_info_legislator_fax"
+                    android:gravity="end" />
+            </TableRow>
+
+            <TableRow android:paddingBottom="20dp">
+
+                <TextView
+                    android:text="Birthday:"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textView_info_legislator_birthday"
+                    android:gravity="end" />
+            </TableRow>
+        </TableLayout>
+    </ScrollView>
+</RelativeLayout>

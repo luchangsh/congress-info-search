@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/content_details_legislators"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.example.cs571hw9.DetailsCommitteesActivity"
+    tools:showIn="@layout/activity_details_committees">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true">
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:shrinkColumns="1"
+            android:stretchColumns="0,1">
+
+            <TableRow android:paddingBottom="20dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="end"
+                    android:layout_span="2"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/imageView_info_committee_favorite"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp" />
+                </LinearLayout>
+            </TableRow>
+
+            <TableRow android:paddingBottom="20dp">
+
+                <TextView
+                    android:layout_width="150dp"
+                    android:text="Committee ID:"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textView_info_committee_id"
+                    android:gravity="end" />
+            </TableRow>
+
+            <TableRow android:paddingBottom="20dp">
+
+                <TextView
+                    android:text="Name:"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textView_info_committee_name"
+                    android:gravity="end" />
+            </TableRow>
+
+            <TableRow android:paddingBottom="20dp">
+
+                <TextView
+                    android:text="Chamber:"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/imageView_info_committee_chamber"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp" />
+
+                    <TextView
+                        android:id="@+id/textView_info_committee_chamber"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+            </TableRow>
+
+
+            <TableRow android:paddingBottom="20dp">
+
+                <TextView
+                    android:text="Parent Committee:"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textView_info_committee_parent_comm"
+                    android:gravity="end" />
+            </TableRow>
+
+            <TableRow android:paddingBottom="20dp">
+
+                <TextView
+                    android:text="Contact:"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textView_info_committee_contact"
+                    android:gravity="end" />
+            </TableRow>
+
+            <TableRow android:paddingBottom="20dp">
+
+                <TextView
+                    android:text="Office:"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textView_info_committee_office"
+                    android:gravity="end" />
+            </TableRow>
+
+        </TableLayout>
+    </ScrollView>
+</RelativeLayout>
